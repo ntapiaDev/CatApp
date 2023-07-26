@@ -3,7 +3,7 @@ import { Cat } from '../interfaces/Cat';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
-export class CatsService {
+export class CatService {
   apiKey = '10aff73f517040319b0c4147bd402539';
   url = `https://crudcrud.com/api/${this.apiKey}/cats`;
   httpOptions = {

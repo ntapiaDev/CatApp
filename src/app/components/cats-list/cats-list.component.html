@@ -1,6 +1,8 @@
 <h1>Voici la liste des chats :</h1>
-<section *ngIf="cats$ | async as cats; else loading">
-  <app-cat *ngFor="let cat of cats" [cat]="cat"></app-cat>
+<section *ngIf="cats$ | async as cats">
+  <div *ngIf="cats.length > 0; else loading">
+    <app-cat *ngFor="let cat of cats" [cat]="cat"></app-cat>
+  </div>
 </section>
 
 <ng-template #loading>
