@@ -8,8 +8,8 @@ export class CatsService {
   url = `https://crudcrud.com/api/${this.apiKey}/cats`;
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
+      'Content-Type': 'application/json',
+    }),
   };
 
   constructor(private http: HttpClient) {}
