@@ -17,15 +17,4 @@ export class CatsListComponent {
     this.cats$ = store.select('cats');
     this.cats$.subscribe(cats => console.log(cats));
   }
-
-  async ngOnInit() {
-    this.catService.getAllCats().subscribe(
-      (cats: Cat[]) => {
-        this.store.dispatch(getAllCats({cats}))
-      },
-      (error) => {
-        console.error('Erreur lors de la récupération des chats :', error);
-      }
-    );
-  }
 }

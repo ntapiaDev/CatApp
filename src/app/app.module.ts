@@ -8,12 +8,14 @@ import { catReducer } from './store/cat.reducer';
 import { CatComponent } from './components/cat/cat.component';
 import { CatService } from './services/cat.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AddCatComponent } from './components/add-cat/add-cat.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CatsListComponent,
-    CatComponent
+    CatComponent,
+    AddCatComponent
   ],
   imports: [
     BrowserModule,
