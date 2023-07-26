@@ -9,6 +9,8 @@ import { CatComponent } from './components/cat/cat.component';
 import { CatService } from './services/cat.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AddCatComponent } from './components/add-cat/add-cat.component';
+import { EffectsModule } from '@ngrx/effects';
+import { CatEffects } from './effects/cat.effects';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { AddCatComponent } from './components/add-cat/add-cat.component';
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot({ cats: catReducer }),
-    HttpClientModule
+    HttpClientModule,
+    EffectsModule.forRoot([CatEffects])
   ],
   providers: [CatService],
   bootstrap: [AppComponent]

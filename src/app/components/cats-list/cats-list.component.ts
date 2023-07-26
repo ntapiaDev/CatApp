@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Cat } from '../../interfaces/Cat';
-import { CatService } from 'src/app/services/cat.service';
-import { getAllCats } from 'src/app/store/cat.actions';
 
 @Component({
   selector: 'app-cats-list',
@@ -11,10 +9,12 @@ import { getAllCats } from 'src/app/store/cat.actions';
   styleUrls: ['./cats-list.component.scss'],
 })
 export class CatsListComponent {
-  cats$: Observable<Cat[]>;
+  cats$: Observable<Cat[]> = this.store.select('cats');
 
-  constructor(private store: Store<{ cats: Cat[] }>, private catService: CatService) {
-    this.cats$ = store.select('cats');
+  constructor(private store: Store<{ cats: Cat[] }>) {}
+
+  ngOnInit() {
+    this.store.dispatch({ type: '[Cat] Load Cats' });
     this.cats$.subscribe(cats => console.log(cats));
   }
 }
