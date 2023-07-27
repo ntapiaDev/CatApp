@@ -15,7 +15,7 @@ import { provideToastr } from 'ngx-toastr';
 import { AddCatComponent } from './components/add-cat/add-cat.component';
 import { CatEffects } from './effects/cat.effects';
 import { HomeComponent } from './components/home/home.component';
-import { EditCatComponent } from './edit-cat/edit-cat.component';
+import { EditCatComponent } from './components/edit-cat/edit-cat.component';
 
 @NgModule({
   declarations: [

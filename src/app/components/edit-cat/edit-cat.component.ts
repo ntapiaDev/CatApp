@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { CatService } from '../services/cat.service';
-import { Cat } from '../interfaces/Cat';
+import { CatService } from '../../services/cat.service';
+import { Cat } from '../../interfaces/Cat';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
