@@ -7,7 +7,7 @@ import { StoreModule } from '@ngrx/store';
 import { catReducer } from './store/cat.reducer';
 import { CatComponent } from './components/cat/cat.component';
 import { CatService } from './services/cat.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { ReactiveFormsModule } from '@angular/forms';
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -16,6 +16,7 @@ import { AddCatComponent } from './components/add-cat/add-cat.component';
 import { CatEffects } from './effects/cat.effects';
 import { HomeComponent } from './components/home/home.component';
 import { EditCatComponent } from './components/edit-cat/edit-cat.component';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,11 @@ import { EditCatComponent } from './components/edit-cat/edit-cat.component';
       positionClass: 'toast-top-center',
       preventDuplicates: true,
     }),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
     CatService,
   ],
   bootstrap: [AppComponent],
