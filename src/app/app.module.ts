@@ -9,6 +9,9 @@ import { CatComponent } from './components/cat/cat.component';
 import { CatService } from './services/cat.service';
 import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
+import { ReactiveFormsModule } from '@angular/forms';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideToastr } from 'ngx-toastr';
 import { AddCatComponent } from './components/add-cat/add-cat.component';
 import { CatEffects } from './effects/cat.effects';
 import { HomeComponent } from './components/home/home.component';
@@ -27,8 +30,17 @@ import { HomeComponent } from './components/home/home.component';
     HttpClientModule,
     StoreModule.forRoot({ cats: catReducer }),
     EffectsModule.forRoot([CatEffects]),
+    ReactiveFormsModule,
   ],
-  providers: [CatService],
+  providers: [
+    provideAnimations(),
+    provideToastr({
+      timeOut: 3000,
+      positionClass: 'toast-top-center',
+      preventDuplicates: true,
+    }),
+    CatService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
