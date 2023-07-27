@@ -14,27 +14,30 @@ import { Store } from '@ngrx/store';
 })
 export class EditCatComponent {
   id: string = '';
+  cat?: Cat;
+
   constructor(
     private catService: CatService,
     private route: ActivatedRoute,
     private router: Router,
     private toastr: ToastrService,
     private store: Store<{ cats: Cat[] }>
-  ) {}
-  async ngOnInit() {
+  ) {
     this.id = this.route.snapshot.params['id'];
-    this.catService.getCatById(this.id).subscribe(
-      (cat: Cat) => {
-        this.form.patchValue({
-          name: cat.name,
-          color: cat.color,
-          age: cat.age,
-        });
-      },
-      (error) => {
-        console.error('Erreur lors de la récupération des chats :', error);
-      }
+  }
+
+  ngOnInit() {
+    this.store.select('cats').subscribe((cats) =>
+      cats.length === 0 ? this.store.dispatch({ type: '[Cat] Load Cats' }) : null
     );
+    this.store.select('cats').subscribe(cats => {
+      this.cat = cats.find(cat => cat._id === this.id)
+      this.form.patchValue({
+        name: this.cat?.name,
+        color: this.cat?.color,
+        age: this.cat?.age,
+      });
+    })
   }
 
   form = new FormGroup({
