@@ -2,4 +2,6 @@
   <p>Nom : {{ cat.name }}</p>
   <p>Couleur : {{ cat.color }}</p>
   <p>Age : {{ cat.age }}</p>
+  <button (click)="deleteCat(cat._id!)">Supprimer</button>
+  <a routerLink="['/modifier-un-chat', cat._id]">Modifier {{ cat.name }}</a>
 </div>

@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class CatService {
-  apiKey = 'dd11205bc5d147b98a4b04f98b9ac569';
+  apiKey = '044455fcc39a436e8f0a4691e4e779b7';
   url = `https://crudcrud.com/api/${this.apiKey}/cats`;
   httpOptions = {
     headers: new HttpHeaders({
