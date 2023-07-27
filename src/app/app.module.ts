@@ -8,25 +8,27 @@ import { catReducer } from './store/cat.reducer';
 import { CatComponent } from './components/cat/cat.component';
 import { CatService } from './services/cat.service';
 import { HttpClientModule } from '@angular/common/http';
-import { AddCatComponent } from './components/add-cat/add-cat.component';
 import { EffectsModule } from '@ngrx/effects';
+import { AddCatComponent } from './components/add-cat/add-cat.component';
 import { CatEffects } from './effects/cat.effects';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     CatsListComponent,
     CatComponent,
-    AddCatComponent
+    AddCatComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({ cats: catReducer }),
     HttpClientModule,
-    EffectsModule.forRoot([CatEffects])
+    StoreModule.forRoot({ cats: catReducer }),
+    EffectsModule.forRoot([CatEffects]),
   ],
   providers: [CatService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

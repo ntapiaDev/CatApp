@@ -3,7 +3,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <a routerLink="/">Accueil</a> - <a routerLink="/ajouter-un-chat">Ajouter un chat...</a>
+    <a routerLink="/">Accueil</a> - 
+    <a routerLink="/voir-les-chats">Voir les chats</a> - 
+    <a routerLink="/ajouter-un-chat">Ajouter un chat...</a>
     <router-outlet></router-outlet>
   `,
   styleUrls: ['./app.component.scss'],

@@ -14,7 +14,8 @@ export class CatsListComponent {
   constructor(private store: Store<{ cats: Cat[] }>) {}
 
   ngOnInit() {
-    this.store.dispatch({ type: '[Cat] Load Cats' });
-    this.cats$.subscribe(cats => console.log(cats));
+    this.cats$.subscribe((cats) =>
+      cats.length === 0 ? this.store.dispatch({ type: '[Cat] Load Cats' }) : null
+    );
   }
 }

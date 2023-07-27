@@ -7,20 +7,17 @@ import { getAllCats } from '../store/cat.actions';
 
 @Injectable()
 export class CatEffects {
-
-  loadCats$ = createEffect(() => this.actions$.pipe(
-    ofType('[Cat] Load Cats'),
-    exhaustMap(() => this.catService.getAllCats()
-      .pipe(
-        // map(cats => ({ type: '[Cat] Get All Cats', payload: cats })),
-        map(cats => getAllCats({ cats })),
-        catchError(() => EMPTY)
-      ))
+  loadCats$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType('[Cat] Load Cats'),
+      exhaustMap(() =>
+        this.catService.getAllCats().pipe(
+          map((cats) => getAllCats({ cats })),
+          catchError(() => EMPTY)
+        )
+      )
     )
   );
 
-  constructor(
-    private actions$: Actions,
-    private catService: CatService
-  ) {}
+  constructor(private actions$: Actions, private catService: CatService) {}
 }
